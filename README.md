@@ -33,13 +33,13 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 - Create new virtual environment and activate. To do so in windows cmd, use following commands
 
 
-        python -m venv my_env
+      python -m venv my_env
       my_env\Scripts\activate
 
 -Download the Zip file and extract into desired folder or Clone the repository using following command 
 
 
-      git clone https://github.com/sallu-786/MultiModal-RAG.git
+      git clone https://github.com/sallu-786/Multimodal_RAG.git
 
 - Install the required libraries
 
