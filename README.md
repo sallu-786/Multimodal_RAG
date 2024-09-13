@@ -5,7 +5,7 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 - Langchain for RAG implementation (Vector based{Default} and Hybrid both available)
 - Faiss for Vector Data Indexing
 
-
+https://github.com/sallu-786/Multimodal_RAG/issues/1#issue-2524451002
 
 # Key Features
 - Generate Images using Dall-E (Text2Img App mode)
