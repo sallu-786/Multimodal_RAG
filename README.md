@@ -11,11 +11,12 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 - Generate Images using Dall-E (Text2Img App mode)
 - Normal text based and image based chat in Chat Mode (QA App mode)
 - Retrieval Augmented Generation in File mode with support for following formats (QA App mode)
-    -PDF (Preview file in sidebar)
-    -Word Document(.docx)
-    -Excel (.csv,xlsx)
-    -Power Point (.pptx)
-    -Text (.txt)
+
+        -PDF (Preview file in sidebar)
+        -Word Document(.docx)
+        -Excel (.csv,xlsx)
+        -Power Point (.pptx)
+        -Text (.txt)
 - Chat about website content in URL mode (QA App mode)
 - Download Complete Chat History stored in local Csv file
 
