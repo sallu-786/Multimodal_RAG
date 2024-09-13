@@ -12,20 +12,26 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 - Normal text based and image based chat in Chat Mode (QA App mode)
 - Retrieval Augmented Generation in File mode with support for following formats (QA App mode)
 
-        -PDF (Preview file in sidebar)
-        -Word Document(.docx)
-        -Excel (.csv,xlsx)
-        -Power Point (.pptx)
-        -Text (.txt)
-- Chat about website content in URL mode (QA App mode)
-- Download Complete Chat History stored in local Csv file
+1.PDF (Preview file in sidebar)
+
+2.Word Document(.docx)
+
+3.Excel (.csv,xlsx)
+
+4.Power Point (.pptx)
+
+5.Text (.txt)
+
+6.Chat about website content in URL mode (QA App mode)
+
+7.Download Complete Chat History stored in local Csv file
 
 # Installation
 
 -Make sure you have python installed. Then go to directory where you want to download the file in command prompt
 
 - Create new virtual environment and activate. To do so in windows cmd, use following commands
-      ```python -m venv my_env
+            ```python -m venv my_env
       my_env\Scripts\activate```
 
 -Download the Zip file and extract into desired folder or Clone the repository using following command 
