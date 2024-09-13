@@ -35,6 +35,8 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
       my_env\Scripts\activate```
 
 -Download the Zip file and extract into desired folder or Clone the repository using following command 
+
+
       ```git clone https://github.com/sallu-786/MultiModal-RAG.git```
 
 - Install the required libraries
