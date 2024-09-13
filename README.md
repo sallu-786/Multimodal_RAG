@@ -12,15 +12,15 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 - Normal text based and image based chat in Chat Mode (QA App mode)
 - Retrieval Augmented Generation in File mode with support for following formats (QA App mode)
 
-1.PDF (Preview file in sidebar)
+   1.PDF (Preview file in sidebar)
 
-2.Word Document(.docx)
+   2.Word Document(.docx)
 
-3.Excel (.csv,xlsx)
+   3.Excel (.csv,xlsx)
 
-4.Power Point (.pptx)
+   4.Power Point (.pptx)
 
-5.Text (.txt)
+   5.Text (.txt)
 
 6.Chat about website content in URL mode (QA App mode)
 
