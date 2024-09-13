@@ -30,7 +30,7 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 
 -Make sure you have python installed. Then go to directory where you want to download the file in command prompt
 
-- Create new virtual environment and activate. To do so in windows cmd, use following commands
+Create new virtual environment and activate. To do so in windows cmd, use following commands
 
 
       python -m venv my_env
