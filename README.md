@@ -28,15 +28,15 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 
 # Installation
 
--Make sure you have python installed. Then go to directory where you want to download the file in command prompt
+- Make sure you have python installed. Then go to directory where you want to download the file in command prompt
 
-Create new virtual environment and activate. To do so in windows cmd, use following commands
+- Create new virtual environment and activate. To do so in windows cmd, use following commands
 
 
       python -m venv my_env
       my_env\Scripts\activate
 
--Download the Zip file and extract into desired folder or Clone the repository using following command 
+- Download the Zip file and extract into desired folder or Clone the repository using following command 
 
 
       git clone https://github.com/sallu-786/Multimodal_RAG.git
