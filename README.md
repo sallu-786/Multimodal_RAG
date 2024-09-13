@@ -5,7 +5,6 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 - Langchain for RAG implementation (Vector based{Default} and Hybrid both available)
 - Faiss for Vector Data Indexing
 
-[TB chat.webm](https://github.com/user-attachments/assets/f0ca0b53-9360-4adb-8bbf-b039c0499abb)
 
 
 # Key Features
