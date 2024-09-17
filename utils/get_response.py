@@ -5,7 +5,7 @@ system_msg = ( """"
            If the information is not in the documents or you can't find it, 
            then give your own information based answer. Don't hallucinate """
         )
-def response_ollama(user_message: str, input_documents, chat_history: list=[], my_model="llama3"):
+def response_ollama(user_message: str, input_documents, chat_history: list=[], my_model="llama3.1"):
     model = ChatOllama(model=my_model, temperature=0)
     my_message = [{"role": "system", "content": system_msg}]
 
