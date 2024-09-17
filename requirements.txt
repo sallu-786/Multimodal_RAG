@@ -13,7 +13,8 @@ pandas
 openpyxl
 rank_bm25 
 beautifulsoup4
-
+ollama
+langchain-ollama
 
 
 
