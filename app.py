@@ -2,10 +2,11 @@ import streamlit as st
 from dotenv import load_dotenv
 from utils.chat_log import save_chat_log, get_downloadable_excel
 from utils.generate_embeddings import retriever,url_retriever,handle_file_upload
-from utils.generate_image import image_to_base64, generate_img
+from utils.generate_image import image_to_base64
 from utils.file_format_handler import displayPDF
-from utils.get_response import response_chatgpt_az
-
+from utils.get_response import response_ollama
+IMAGE_MODEL="llava"
+RAG_MODEL="llama3.1"
 
 # Configuration
 load_dotenv()
@@ -38,12 +39,12 @@ def main():
     with st.sidebar:
         
         
-        st.session_state.mode = st.radio("Select Mode:", ("Chat", "Files","URL"))
+        st.session_state.mode = st.radio("Select Mode:", ("Images", "Files","URL"))
 
 
-        if st.session_state.mode == "Chat":
+        if st.session_state.mode == "Images":
 
-            st.session_state.file = st.file_uploader("Upload Image 🖼️ ", accept_multiple_files=False, type=["png", "jpg", "jpeg"])
+            st.session_state.file = st.file_uploader("Upload Image 🖼️ ", accept_multiple_files=False, type=["png", "jpg", "jpeg","mp4"])
         elif st.session_state.mode == "Files":
 
 
@@ -61,7 +62,7 @@ def main():
 
 
             # try:
-            if st.session_state.mode == "Chat":
+            if st.session_state.mode == "Images":
                 if st.session_state.file.type in ['image/jpeg', 'image/png']:
                     img_base64 = image_to_base64(st.session_state.file)
                     if "chat_log" not in st.session_state:
@@ -69,11 +70,10 @@ def main():
                     st.session_state.chat_log.append({
                         "role": "user", 
                         "content": [{
-                            "type": "image_url",
-                            "image_url": {"url": f"data:{st.session_state.file.type};base64,{img_base64}"}
-                        }]
+                             "type": "image_url",
+                             "image_url": {"url": f"data:{st.session_state.file.type};base64,{img_base64}"}
+                         }]
                     })
-
                 else:
                     st.error("Image Processing Failed")
 
@@ -106,6 +106,7 @@ def main():
                         st.write(content["text"])
                     elif content["type"] == "image_url":
                         st.image(content["image_url"]["url"])
+
             else:
                 st.write(message["content"])
 
@@ -117,25 +118,29 @@ def main():
                 st.write(message)
             
             with st.spinner("Processing..."):
+
                 if st.session_state.mode == "Files" and "text_chunks" in st.session_state:
-                    # Process text-based files
                     reranked_results = retriever(st.session_state.text_chunks, message)
                     doc_texts = [{"content": doc.page_content, "metadata": doc.metadata} for doc in reranked_results]
-                    response = response_chatgpt_az(message, doc_texts, chat_history=st.session_state.chat_log)
+                    response = response_ollama(message, doc_texts, chat_history=st.session_state.chat_log)
 
-                elif st.session_state.mode == "Chat":
-                    response = response_chatgpt_az(message,[],chat_history=st.session_state.chat_log)
-
+                elif st.session_state.mode == "Images":
+                    if (st.session_state.file) is not None:
+                        if st.session_state.file.type in ['image/jpeg', 'image/png']:
+                            response = response_ollama(message,[],chat_history=st.session_state.chat_log,my_model=IMAGE_MODEL)
+                    else:
+                        response = response_ollama(message,[],chat_history=st.session_state.chat_log)
                 elif st.session_state.mode == "URL":
                     reranked_results_url=url_retriever(st.session_state.target_url,message)
                     url_text = [{"content": doc.page_content, "metadata": doc.metadata} for doc in reranked_results_url]
                    
-                    response = response_chatgpt_az(message, url_text, chat_history=st.session_state.chat_log)
+                    response = response_ollama(message, url_text, chat_history=st.session_state.chat_log)
                  
               
 
             with st.chat_message(ASSISTANT_NAME):
-                        assistant_msg = response["answer"]
+                        # assistant_msg = response["answer"]
+                        assistant_msg = response
                         st.write(assistant_msg)
                         
             st.session_state.chat_log.append({"role": "user", "content": [{"type": "text", "text": message}]})
@@ -143,7 +148,6 @@ def main():
                         
             save_chat_log(message, assistant_msg)
                 
-
             
         except Exception as e:
             st.error(f"Error: Please ensure to submit a valid File/URL first. Use Chat mode otherwise")
@@ -159,10 +163,5 @@ def main():
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
 
-
-st.session_state.choice= st.sidebar.selectbox("App Mode", ["QA", "Text2Image"])
-if st.session_state.choice == "QA":
+if __name__ == "__main__":
     main()
-
-elif st.session_state.choice == "Text2Image":
-    generate_img()
