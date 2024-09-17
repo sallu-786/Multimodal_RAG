@@ -5,8 +5,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from utils.file_format_handler import get_pdf_text,get_text,get_word_text,get_ppt_text,get_excel_text,get_csv_text
 import os
-from langchain_openai import AzureOpenAIEmbeddings
-# from langchain_huggingface import HuggingFaceEmbeddings
+
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.retrievers import EnsembleRetriever
 from dotenv import load_dotenv
 from langchain_community.retrievers import BM25Retriever
@@ -14,10 +14,9 @@ import time
 import streamlit as st
 
 load_dotenv()
-model = "kant_embed"
-#model="intfloat/multilingual-e5-large" 
-endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-api_key = os.getenv("AZURE_OPENAI_API_KEY")
+
+model="intfloat/multilingual-e5-large" 
+
 
 #Handle multiple files
 def get_file(files):
@@ -72,10 +71,6 @@ def get_text_chunks(pages):  # divide text of file into chunks
 
 
 
-
-
-
-
 #Document Retriever-------------------------------------------------------------------------------------------- 
 
 class DocumentChunk:                   #create a class to store text chunk with metadata (page number)
@@ -85,9 +80,7 @@ class DocumentChunk:                   #create a class to store text chunk with 
 
 def retriever(text_chunks, query):
   
-
-    embeddings = AzureOpenAIEmbeddings(azure_deployment=model, openai_api_version="2023-05-15")
-        # embeddings = HuggingFaceEmbeddings(model_name=model)  
+    embeddings = HuggingFaceEmbeddings(model_name=model)  
     documents = [DocumentChunk(page_content=chunk['text'], metadata={'page': chunk['page_number']}) 
                  for chunk in text_chunks]
     vector_store = FAISS.from_documents(documents, embeddings)
@@ -105,8 +98,8 @@ def hybrid_retriever(text_chunks, query,embed_model=model):
     docs = [DocumentChunk(page_content=chunk['text'], metadata={'page': chunk['page_number']})
                 for chunk in text_chunks]
     bm25_retriever = BM25Retriever.from_documents(docs)
-    embeddings = AzureOpenAIEmbeddings(azure_deployment=embed_model, openai_api_version="2023-05-15")
-    # embeddings = HuggingFaceEmbeddings(model_name=model)  
+
+    embeddings = HuggingFaceEmbeddings(model_name=model)  
     documents = [DocumentChunk(page_content=chunk['text'], metadata={'page': chunk['page_number']}) 
                  for chunk in text_chunks]
     
@@ -139,10 +132,6 @@ def handle_file_upload(file):
 
 
 
-
-
-
-
 #URL Retriever------------------------------------------------------------------------------------------------------------
 
 def url_chunks(target_url):
@@ -161,7 +150,7 @@ def url_retriever(target_url,query):
    
     loader = WebBaseLoader(target_url)
     raw_document = loader.load()
-    embeddings = AzureOpenAIEmbeddings(azure_deployment=model, openai_api_version="2023-05-15")
+    embeddings = HuggingFaceEmbeddings(model_name=model) 
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=1000,
         chunk_overlap=10,
