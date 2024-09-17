@@ -47,7 +47,7 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
         pip install -r requirements.txt
 
 - Go to .env file and set your AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY. Then enter the model name and API version. If you want to use some other model visit https://python.langchain.com/v0.2/docs/integrations/llms/
-- Go to utils/generate_embeddings.py and enter the embedding model name as deployed. If you want to use Open Source embedding model use the code that has been commented inside the file
+- Go to utils/generate_embeddings.py and enter the embedding model details as needed. 
 - For image Generation Dall-E-3 is deployed via Azure OpenAI. Please make changes according to your requirement in utils/generate_image.py
 
   
