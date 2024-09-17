@@ -25,7 +25,7 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 
 6.Chat about website content in URL mode (QA App mode)
 
-7.Download Complete Chat History stored in local Csv file
+7.Download Complete Chat History stored in local CSV file
 
 # Installation
 
