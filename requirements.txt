@@ -15,6 +15,7 @@ rank_bm25
 beautifulsoup4
 ollama
 langchain-ollama
+st-copy-to-clipboard
 
 
 
