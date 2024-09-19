@@ -6,6 +6,8 @@ from utils.generate_image import image_to_base64
 from utils.file_format_handler import displayPDF
 from utils.get_response import response_ollama
 from st_copy_to_clipboard import st_copy_to_clipboard
+''' To adjust frame height of st_copy_to_clipboard please go to--> your_venv\Lib\site-packages\st_copy_to_clipboard\frontend\main.js 
+and change value to Streamlit.setFrameHeight(35)'''
 
 IMAGE_MODEL="llava"
 RAG_MODEL="llama3.1"
