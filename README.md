@@ -1,7 +1,7 @@
 # MultiModal-RAG
 An open-source Multimodal RAG-UI for chatting with your documents and images. Key tools used for development are
 - Streamlit for UI
-- Azure OpenAI for LLM/Embeddings
+- Azure OpenAI for LLM/Embeddings (Check Local_rag branch for complete open source solution)
 - Langchain for RAG implementation (Vector based{Default} and Hybrid both available)
 - Faiss for Vector Data Indexing
 
