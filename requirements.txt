@@ -13,6 +13,7 @@ pandas
 openpyxl
 rank_bm25 
 beautifulsoup4
+st-copy-to-clipboard
 
 
 
