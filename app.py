@@ -5,6 +5,9 @@ from utils.generate_embeddings import retriever,url_retriever,handle_file_upload
 from utils.generate_image import image_to_base64, generate_img
 from utils.file_format_handler import displayPDF
 from utils.get_response import response_chatgpt_az
+from st_copy_to_clipboard import st_copy_to_clipboard 
+''' To adjust frame height of st_copy_to_clipboard please go to--> your_venv\Lib\site-packages\st_copy_to_clipboard\frontend\main.js 
+and change value of Streamlit.setFrameHeight(35)'''
 
 
 # Configuration
@@ -104,6 +107,8 @@ def main():
                 for content in message["content"]:
                     if content["type"] == "text":
                         st.write(content["text"])
+                        if message["role"]=="assistant":
+                            st_copy_to_clipboard(content["text"]) 
                     elif content["type"] == "image_url":
                         st.image(content["image_url"]["url"])
             else:
@@ -137,6 +142,7 @@ def main():
             with st.chat_message(ASSISTANT_NAME):
                         assistant_msg = response["answer"]
                         st.write(assistant_msg)
+                        st_copy_to_clipboard(assistant_msg)
                         
             st.session_state.chat_log.append({"role": "user", "content": [{"type": "text", "text": message}]})
             st.session_state.chat_log.append({"role": "assistant", "content": [{"type": "text", "text": assistant_msg}]})
