@@ -7,7 +7,7 @@ from utils.file_format_handler import displayPDF
 from utils.get_response import response_chatgpt_az
 from st_copy_to_clipboard import st_copy_to_clipboard 
 ''' To adjust frame height of st_copy_to_clipboard please go to--> your_venv\Lib\site-packages\st_copy_to_clipboard\frontend\main.js 
-and change value of Streamlit.setFrameHeight(35)'''
+and change value to Streamlit.setFrameHeight(35)'''
 
 
 # Configuration
