@@ -5,6 +5,8 @@ from utils.generate_embeddings import retriever,url_retriever,handle_file_upload
 from utils.generate_image import image_to_base64
 from utils.file_format_handler import displayPDF
 from utils.get_response import response_ollama
+from st_copy_to_clipboard import st_copy_to_clipboard
+
 IMAGE_MODEL="llava"
 RAG_MODEL="llama3.1"
 
@@ -104,6 +106,8 @@ def main():
                 for content in message["content"]:
                     if content["type"] == "text":
                         st.write(content["text"])
+                        if message["role"]=="assistant":
+                            st_copy_to_clipboard(content["text"]) 
                     elif content["type"] == "image_url":
                         st.image(content["image_url"]["url"])
 
@@ -142,6 +146,7 @@ def main():
                         # assistant_msg = response["answer"]
                         assistant_msg = response
                         st.write(assistant_msg)
+                        st_copy_to_clipboard(assistant_msg)
                         
             st.session_state.chat_log.append({"role": "user", "content": [{"type": "text", "text": message}]})
             st.session_state.chat_log.append({"role": "assistant", "content": [{"type": "text", "text": assistant_msg}]})
