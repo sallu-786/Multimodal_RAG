@@ -1,3 +1,4 @@
+
 # MultiModal-RAG
 An open-source Multimodal RAG-UI for chatting with your documents and images. Key tools used for development are
 - Streamlit for UI
@@ -7,7 +8,8 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
   LLAVA (for Chat/Image mode), LLAMA3.1 (files&URL mode) and e5-large for embeddings in _**Local_rag**_ branch {Completely Open-Source}
 - Langchain for RAG implementation (Vector based{Default} and Hybrid both available)
 - Faiss for Vector Data Indexing
-[video](https://github.com/sallu-786/Multimodal_RAG/issues/1#issue-2524451002)
+
+https://github.com/sallu-786/Multimodal_RAG/issues/1#issue-2524451002
 
 
 # Key Features
