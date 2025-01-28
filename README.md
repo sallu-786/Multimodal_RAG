@@ -8,7 +8,7 @@ An open-source Multimodal RAG-UI for chatting with your documents and images. Ke
 - Langchain for RAG implementation (Vector based{Default} and Hybrid both available)
 - Faiss for Vector Data Indexing
 
-[TB chat.webm](https://github.com/user-attachments/assets/0fa89f57-8ad2-4f6f-b42e-f6720a4a6a4a)
+[Watch the demo video](https://github.com/sallu-786/Chainlit_Chatbot/issues/1#issue-2814787897)
 
 # Key Features
 - Generate Images using Dall-E (Text2Img App mode)
